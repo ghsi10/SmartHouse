@@ -4,7 +4,12 @@ public class Lamp implements Device {
 	private boolean mode;
 	@Override
 	public void Mode(boolean m) {
+		System.out.println(m);
 		mode=m;
+	}
+	@Override
+	public String getName() {
+		return name;
 	}
 
 }

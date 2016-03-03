@@ -1,6 +1,6 @@
 
 public class AirConditioner implements Device {
-	public static final String name = "Lamp";
+	public static final String name = "AirConditioner";
 	private boolean mode;
 	private double value;
 	@Override
@@ -10,5 +10,9 @@ public class AirConditioner implements Device {
 	@Override
 	public void Value(double v) {
 		value=v;
+	}
+	@Override
+	public String getName() {
+		return name;
 	}
 }
