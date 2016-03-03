@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.Socket;
@@ -10,6 +11,12 @@ public class Client {
 		ObjectOutputStream output = new ObjectOutputStream(socket.getOutputStream());
 		ObjectInputStream input = new ObjectInputStream(socket.getInputStream());
 		Scanner sc = new Scanner(System.in);
+		new Thread(){public void run(){
+			try {
+				while (true) 
+					System.out.println((String)input.readObject());
+			} catch (ClassNotFoundException | IOException e) {}
+			}}.start();
 		while (true) {
 			output.writeObject(sc.nextLine());
 		}

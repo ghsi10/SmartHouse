@@ -18,9 +18,8 @@ public class User {
 	}
 	public String strGetDevices() {
 		String tmp="";
-		for (int i=0;i<devices.size()-1;i++)
-			tmp+=devices.get(i).getName()+" ";
-		tmp+=devices.get(devices.size()-1).getName();
+		for (int i=0;i<devices.size();i++)
+			tmp+=devices.get(i)+"\n";
 		return tmp;
 	}
 	public Device getDevice(String d) {

@@ -81,12 +81,18 @@ public class Server {
 						user=login(data[1]);
 						if (user==null) {
 							try {
-								output.writeObject("You are not logged in");
+								output.writeObject("You are not logged in"); //fix it
 								System.out.println("Unauthenticated request.");
 							} catch (IOException e) {}
 						}
 						else
 							System.out.println("new login: "+user.getName());
+					}
+					else if (user==null) {
+						try {
+							output.writeObject("You are not logged in");
+							System.out.println("Unauthenticated request.");
+						} catch (IOException e) {}
 					}
 					else if (data[0].compareTo("ListDevices")==0) {
 						try {
