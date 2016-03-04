@@ -14,24 +14,23 @@ public class Server {
 	public static void main(String[] args) {
 		new Server();
 	}
-	public Server() {
-
+	
+	public void test() {
 		User user1= new User("idan");
 		User user2= new User("ghsi");
 		User user3= new User("ghsi10");
-
 		user1.addDevice(new Lamp());
 		user2.addDevice(new Lamp());
 		user2.addDevice(new AirConditioner());
 		user3.addDevice(new AirConditioner());
-
 		users= new ArrayList<User>();
-
 		users.add(user1);
 		users.add(user2);
 		users.add(user3);
-
-
+	}
+	
+	public Server() {
+		test();
 		keepAlive=true;
 		clientList = new ArrayList<ServerThread>();
 		try {
