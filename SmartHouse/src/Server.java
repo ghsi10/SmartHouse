@@ -15,23 +15,23 @@ public class Server {
 		new Server();
 	}
 	public Server() {
-		
+
 		User user1= new User("idan");
 		User user2= new User("ghsi");
 		User user3= new User("ghsi10");
-		
+
 		user1.addDevice(new Lamp());
 		user2.addDevice(new Lamp());
 		user2.addDevice(new AirConditioner());
 		user3.addDevice(new AirConditioner());
-		
+
 		users= new ArrayList<User>();
-		
+
 		users.add(user1);
 		users.add(user2);
 		users.add(user3);
-		
-		
+
+
 		keepAlive=true;
 		clientList = new ArrayList<ServerThread>();
 		try {
@@ -79,21 +79,13 @@ public class Server {
 					data = ((String)input.readObject()).split(" ");
 					if (data[0].compareTo("Login")==0) {
 						user=login(data[1]);
-						if (user==null) {
-							try {
-								output.writeObject("You are not logged in"); //fix it
-								System.out.println("Unauthenticated request.");
-							} catch (IOException e) {}
-						}
+						if (user==null)
+							System.out.println("login fail.");
 						else
 							System.out.println("new login: "+user.getName());
 					}
-					else if (user==null) {
-						try {
-							output.writeObject("You are not logged in");
-							System.out.println("Unauthenticated request.");
-						} catch (IOException e) {}
-					}
+					else if (user==null)
+						System.out.println("Unauthenticated request.");
 					else if (data[0].compareTo("ListDevices")==0) {
 						try {
 							output.writeObject(user.strGetDevices());
