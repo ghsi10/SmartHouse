@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 public class Client {
 	public static final int PORT = 1234;
+	@SuppressWarnings("resource")
 	public static void main(String[] args) throws Exception {
 		Socket socket = new Socket("localhost", PORT);
 		ObjectOutputStream output = new ObjectOutputStream(socket.getOutputStream());
